@@ -16,7 +16,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	const SPEED = 5.5
-	
+
 	var input_direction_2D = Input.get_vector(
 		"move_left", "move_right", "move_forward", "move_back"
 	)
@@ -28,4 +28,8 @@ func _physics_process(delta: float) -> void:
 	velocity.x = direction.x * SPEED
 	velocity.z = direction.z * SPEED
 	
+	velocity.y -= 20.0 * delta
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = 10.0
+
 	move_and_slide()
