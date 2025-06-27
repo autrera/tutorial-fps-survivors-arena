@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpwedbafs6dso"]
+
+[ext_resource type="PackedScene" uid="uid://drpr1msjpbv8k" path="res://player/projectile/projectile_model.glb" id="1_kixxk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hgguu"]
+
+[node name="Bullet3D" type="Area3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_hgguu")
+
+[node name="projectile_model" parent="." instance=ExtResource("1_kixxk")]
