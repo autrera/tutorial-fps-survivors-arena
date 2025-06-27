@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0vxqnscejbjg"]
+[gd_scene load_steps=6 format=3 uid="uid://d0vxqnscejbjg"]
 
 [ext_resource type="PackedScene" uid="uid://crfyc4hc3x4at" path="res://player/simple_gun/gun_model.glb" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://corrr0lo432yj" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://dpwedbafs6dso" path="res://player/bullet_3d.tscn" id="3_hqtel"]
 [ext_resource type="Texture2D" uid="uid://0377i2hk4o5o" path="res://player/reticle.png" id="3_i3pqv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
@@ -19,6 +20,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64347, 0)
 
 [node name="gun_model" parent="Camera3D" instance=ExtResource("1_4flbx")]
 transform = Transform3D(-0.634645, 0, 0.0161644, 0, 0.634851, 0, -0.0161644, 0, -0.634645, 0.376598, -0.28856, -1.01606)
+
+[node name="Marker3D" type="Marker3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.384937, -0.282894, -1.36082)
+
+[node name="Bullet3D" parent="Camera3D/Marker3D" instance=ExtResource("3_hqtel")]
 
 [node name="Reticle" type="TextureRect" parent="."]
 anchors_preset = 8

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dp5k8w2lw8hp8" path="res://player/projectile/projectile_3d.tscn" id="1_kixxk"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hgguu"]
-radius = 0.213566
+radius = 0.129513
 
 [node name="Bullet3D" type="Area3D"]
 
@@ -11,3 +11,4 @@ radius = 0.213566
 shape = SubResource("SphereShape3D_hgguu")
 
 [node name="Projectile3D" parent="." instance=ExtResource("1_kixxk")]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 0, 0)
