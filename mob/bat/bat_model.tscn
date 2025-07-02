@@ -214,6 +214,7 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
 unique_name_in_owner = true
+root_node = NodePath("%AnimationTree/..")
 tree_root = SubResource("AnimationNodeBlendTree_scfiv")
 anim_player = NodePath("../AnimationPlayer")
 parameters/OneShot/active = false
