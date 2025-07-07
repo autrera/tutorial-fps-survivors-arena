@@ -95,3 +95,4 @@ shadow_enabled = true
 environment = SubResource("Environment_80nbo")
 
 [connection signal="mob_spawned" from="MobSpawner3D" to="." method="_on_mob_spawner_3d_mob_spawned"]
+[connection signal="body_entered" from="KillPlane" to="." method="_on_kill_plane_body_entered"]
