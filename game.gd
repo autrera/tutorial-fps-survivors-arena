@@ -12,4 +12,4 @@ func _on_mob_spawner_3d_mob_spawned(mob: Variant) -> void:
 
 
 func _on_kill_plane_body_entered(body: Node3D) -> void:
-	get_tree().reload_current_scene()
+	get_tree().reload_current_scene.call_deferred()
