@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1gbpir2xlj0v"]
+[gd_scene load_steps=10 format=3 uid="uid://d1gbpir2xlj0v"]
 
 [ext_resource type="PackedScene" uid="uid://d0vxqnscejbjg" path="res://player.tscn" id="1_80nbo"]
 [ext_resource type="Material" uid="uid://c15gbas3spb6b" path="res://level/platform.tres" id="1_feb5d"]
@@ -6,6 +6,13 @@
 [ext_resource type="Material" uid="uid://dswd4k6oxqv5w" path="res://level/bridge.tres" id="2_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://cmabat8uoiejh" path="res://mob/mob.tscn" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://cap4606bvsr8y" path="res://mob/spawner/mob_spawner_3d.tscn" id="5_7jktm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7jktm"]
+font_size = 64
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ryrav"]
 
 [sub_resource type="Environment" id="Environment_80nbo"]
 background_mode = 1
@@ -19,13 +26,27 @@ fog_density = 0.0
 fog_height = -4.75
 fog_height_density = 0.2
 
-[sub_resource type="LabelSettings" id="LabelSettings_7jktm"]
-font_size = 64
-outline_size = 8
-outline_color = Color(0, 0, 0, 1)
-
 [node name="Game" type="Node3D"]
 script = ExtResource("1_ryrav")
+
+[node name="MobSpawner3D" parent="." instance=ExtResource("5_7jktm")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 18, 0, 0)
+mob_to_spawn = ExtResource("4_fc0e3")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 305.0
+offset_bottom = 152.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_7jktm")
+
+[node name="KillPlane" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillPlane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+shape = SubResource("WorldBoundaryShape3D_ryrav")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
@@ -72,18 +93,5 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_80nbo")
-
-[node name="MobSpawner3D" parent="." instance=ExtResource("5_7jktm")]
-transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 18, 0, 0)
-mob_to_spawn = ExtResource("4_fc0e3")
-
-[node name="Label" type="Label" parent="."]
-unique_name_in_owner = true
-offset_left = 64.0
-offset_top = 64.0
-offset_right = 305.0
-offset_bottom = 152.0
-text = "Score: 0"
-label_settings = SubResource("LabelSettings_7jktm")
 
 [connection signal="mob_spawned" from="MobSpawner3D" to="." method="_on_mob_spawner_3d_mob_spawned"]
