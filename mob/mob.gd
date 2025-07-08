@@ -34,9 +34,9 @@ func take_damage():
 		var random_upward_force = Vector3.UP * randf_range(1.0, 5.0)
 		apply_central_impulse(direction * 10.0 + random_upward_force)
 		timer.start()
-		died.emit()
 		ko_sound.play()
 
 
 func _on_timer_timeout() -> void:
 	queue_free()
+	died.emit()
