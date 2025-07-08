@@ -43,9 +43,11 @@ text = "Score: 0"
 label_settings = SubResource("LabelSettings_7jktm")
 
 [node name="KillPlane" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2147483648
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillPlane"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
 shape = SubResource("WorldBoundaryShape3D_ryrav")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
@@ -86,6 +88,7 @@ material = ExtResource("1_feb5d")
 
 [node name="Player" parent="." instance=ExtResource("1_80nbo")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+collision_layer = 2147483649
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6, 0)
