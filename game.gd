@@ -16,7 +16,10 @@ func do_poof(mob_global_position):
 
 
 func _on_mob_spawner_3d_mob_spawned(mob: Variant) -> void:
-	mob.died.connect(increase_score)
+	mob.died.connect(func on_mob_died():
+		increase_score()
+		do_poof(mob.global_position)
+	)
 	do_poof(mob.global_position)
 
 
